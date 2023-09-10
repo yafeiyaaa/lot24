@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}游戏界面{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form action="/index" method="post">
+        <div class="container">
+            <div class="row">
+                {% for num_index in range(4) %}
+                    {% if session['nums'][num_index] != None %}
+                        <button class="button" type="submit" name="button" value="{{ num_index }}" >{{ session['nums'][num_index] }}</button>
+                    {% else %}
+                        <button class="invisible-button"></button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <button type="submit" class="button" name="button" value="4">+</button>
+                <button type="submit" class="button" name="button" value="5">-</button>
+                <button type="submit" class="button" name="button" value="6">*</button>
+                <button type="submit" class="button" name="button" value="7">/</button>
+                <button type="submit" class="button" name="button" value="8"><-</button>
+                <button type="submit" class="button" name="button" value="9">-></button>
+            </div>    
+        </div>
+    </form>   
+
+  </form>
+{% endblock %}
